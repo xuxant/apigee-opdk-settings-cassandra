@@ -71,6 +71,8 @@ def configure_cassandra_racks(cassandra_groups):
         region_parts = cassandra_group_name.split('-')
         for ds_ip in cassandra_groups[cassandra_group_name]:
             rack = cassandra_groups[cassandra_group_name][ds_ip]['rack']
+            if rack is None:
+                rack = 1
             if cassandra_groups[cassandra_group_name][ds_ip]['region'] is None:
                 region = region_parts[1]
             else:
