@@ -79,6 +79,9 @@ def configure_cassandra_racks(cassandra_groups):
                 region = cassandra_groups[cassandra_group_name][ds_ip]['region']
 
             region_nums = region.split('-')
+            if region_nums.__len__() < 2:
+                region_nums[0] = 'dc'
+                region_nums[1] = '1'
 
             cassandra_groups[cassandra_group_name][ds_ip]['private_ip'] = cassandra_groups[cassandra_group_name][ds_ip]['private_ip'] + ":" + str(region_nums[1]) + ',' + str(rack)
     return cassandra_groups
