@@ -25,10 +25,10 @@
     that:
     - opdk_cass_username
     - opdk_cass_password
-    - private_address is defined
-    - region is defined
     - opdk_version is defined
     - opdk_ldap_pass is defined
+    - private_address is defined
+    - region is defined
     - enable_system_check is defined
     msg: "Please provide the missing variable"
 
