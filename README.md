@@ -7,12 +7,18 @@ installation decisions.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role uses the inventory groups to determine the region of the Cassandra role. A minimum of one
+inventory group must be defined for a Cassandra ring. This is accomplished with a `[dc-1-ds]` declared
+in the inventory file. The inventory template contains detailed documentation regarding this configuration.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name | Description |
+| --- | --- |
+| private_address | The attribute `private_address` for each Cassandra node should be available to construct the Cassandra hosts string to be used in a silent response file. |
+| region | The attribute `region` for each Cassandra node should be available to construct the Cassandra hosts string to be used in a silent response file. | 
+
 
 Dependencies
 ------------
@@ -20,6 +26,8 @@ Dependencies
 This role has a dependency on the following roles: 
 
 * apigee-opdk-settings-region
+* apigee-opdk-settings-private-address
+
 
 Example Playbook
 ----------------
