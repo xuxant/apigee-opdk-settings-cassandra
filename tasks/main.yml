@@ -23,13 +23,8 @@
 - name: Assert variables are available
   assert:
     that:
-    - opdk_version is defined
-    - opdk_ldap_pass is defined
-    - opdk_cass_username is defined or opdk_cass_username == ""
-    - opdk_cass_password is defined or opdk_cass_password == ""
     - private_address is defined
     - region is defined
-    - enable_system_check is defined
     msg: "Please provide the missing variable"
 
 - name: Construct cassandra hosts configuration

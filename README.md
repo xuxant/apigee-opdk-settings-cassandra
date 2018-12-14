@@ -1,7 +1,8 @@
-Role Name
+Apigee OPDK Cassandra Settings
 =========
 
-A brief description of the role goes here.
+This role updates the Ansible cache with attributes that are used to generate templates and make 
+installation decisions. 
 
 Requirements
 ------------
@@ -16,7 +17,9 @@ A description of the settable variables for this role should go here, including 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role has a dependency on the following roles: 
+
+* apigee-opdk-settings-region
 
 Example Playbook
 ----------------
@@ -25,14 +28,14 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: apigee-opdk-settings-cassandra }
 
 License
 -------
 
-BSD
+Apache 2.0
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Carlos Frias
