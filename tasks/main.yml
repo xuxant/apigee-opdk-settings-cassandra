@@ -10,15 +10,15 @@
     msg: 'dc-1 group is not defined in the inventory file, please define the dc-1 group in the inventory file'
   when: groups['dc-1'] is not defined
 
-- name: Fail if dc-1-ds group is not provided
+- name: Fail if dc_1_ds group is not provided
   fail:
-    msg: 'dc-1-ds group is not defined in the inventory file, please define the dc-1-ds group in the inventory file'
-  when: groups['dc-1-ds'] is not defined
+    msg: 'dc_1_ds group is not defined in the inventory file, please define the dc_1_ds group in the inventory file'
+  when: groups['dc_1_ds'] is not defined
 
-- name: Fail if dc-1-ms group is not provided
+- name: Fail if dc_1_ms group is not provided
   fail:
-    msg: 'dc-1-ms group is not defined in the inventory file, please define the dc-1-ms group in the inventory file'
-  when: groups['dc-1-ms'] is not defined
+    msg: 'dc_1_ms group is not defined in the inventory file, please define the dc_1_ms group in the inventory file'
+  when: groups['dc_1_ms'] is not defined
 
 - name: Assert variables are available
   assert:
