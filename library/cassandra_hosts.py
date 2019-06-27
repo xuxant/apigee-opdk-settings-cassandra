@@ -37,7 +37,7 @@ def build_cass_hosts_config(inventory_hostname, hostvars):
 def extract_cassandra_groups(inventory_vars, hostvars):
     cassandra_groups = {}
     for name in inventory_vars[GROUPS]:
-        if 'dc-' in name and '-ds' in name:
+        if 'dc_' in name and '_ds' in name:
             cassandra_groups[name] = list(inventory_vars[GROUPS][name])
 
     cassandra_ip_mappings= { 'lead_group': '' }
@@ -88,7 +88,7 @@ def configure_cassandra_racks(cassandra_groups):
 
 def determine_lead_group(cassandra_groups, inventory_hostname, groups):
     for group_name in groups:
-        if 'dc-' in group_name:
+        if 'dc_' in group_name:
             if inventory_hostname in groups[group_name]:
                 group_name_split = group_name.split('-')
                 cassandra_groups['lead_group'] = group_name_split[0] + '-' + group_name_split[1]
@@ -98,7 +98,7 @@ def determine_lead_group(cassandra_groups, inventory_hostname, groups):
 
 def prioritize_cassandra_groups(cassandra_groups):
     prioritized_groups = []
-    ds_lead_group = cassandra_groups['lead_group'] + '-ds'
+    ds_lead_group = cassandra_groups['lead_group'] + '_ds'
     del cassandra_groups['lead_group']
 
     for ds_ip in cassandra_groups[ds_lead_group]:
