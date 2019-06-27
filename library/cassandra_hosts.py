@@ -68,7 +68,7 @@ def extract_cassandra_groups(inventory_vars, hostvars):
 
 def configure_cassandra_racks(cassandra_groups):
     for cassandra_group_name in cassandra_groups:
-        region_parts = cassandra_group_name.split('-')
+        region_parts = cassandra_group_name.split('_')
         for ds_ip in cassandra_groups[cassandra_group_name]:
             rack = cassandra_groups[cassandra_group_name][ds_ip]['rack']
             if rack is None:
@@ -78,7 +78,7 @@ def configure_cassandra_racks(cassandra_groups):
             else:
                 region = cassandra_groups[cassandra_group_name][ds_ip]['region']
 
-            region_nums = region.split('-')
+            region_nums = region.split('_')
             if region_nums.__len__() < 2:
                 region_nums = ['dc', '1']
 
@@ -90,8 +90,8 @@ def determine_lead_group(cassandra_groups, inventory_hostname, groups):
     for group_name in groups:
         if 'dc_' in group_name:
             if inventory_hostname in groups[group_name]:
-                group_name_split = group_name.split('-')
-                cassandra_groups['lead_group'] = group_name_split[0] + '-' + group_name_split[1]
+                group_name_split = group_name.split('_')
+                cassandra_groups['lead_group'] = group_name_split[0] + '_' + group_name_split[1]
                 break
     return cassandra_groups
 
