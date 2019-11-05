@@ -28,7 +28,6 @@
     msg: "Please provide the missing variable"
 
 - name: Construct cassandra hosts configuration
-  become: yes
   cassandra_hosts:
     inventory_hostname: '{{ inventory_hostname }}'
     hostvars: '{{ hostvars | to_json }}'
