@@ -36,5 +36,5 @@
 - name: Set cassandra_hosts for aio
   set_fact:
     cacheable: yes
-    cassandra_hosts: "{{ inventory_hostname }}"
+    cassandra_hosts: "{{ private_address }}"
   when: groups['aio'] is defined
