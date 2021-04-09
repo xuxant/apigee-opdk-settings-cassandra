@@ -29,6 +29,12 @@
 
 - name: Construct cassandra hosts configuration
   cassandra_hosts:
-    inventory_hostname: '{{ inventory_hostname }}'
+    inventory_hostname: '{{ inventory_hostname }}:1,1'
     hostvars: '{{ hostvars | to_json }}'
-  when: manual_response_file is not defined or not manual_response_file
+  when: groups['aio'] is not defined and manual_response_file is not defined or not manual_response_file
+
+- name: Set cassandra_hosts for aio
+  set_fact:
+    cacheable: yes
+    cassandra_hosts: "{{ inventory_hostname }}"
+  when: groups['aio'] is defined
