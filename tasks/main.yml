@@ -33,8 +33,8 @@
     hostvars: '{{ hostvars | to_json }}'
   when: groups['aio'] is not defined and manual_response_file is not defined or not manual_response_file
 
-- name: Set cassandra_hosts for aio
-  set_fact:
-    cacheable: yes
-    cassandra_hosts: "[{{ private_address }}]"
-  when: groups['aio'] is defined
+# - name: Set cassandra_hosts for aio
+#   set_fact:
+#     cacheable: yes
+#     cassandra_hosts: "[{{ private_address }}]"
+#   when: groups['aio'] is defined
